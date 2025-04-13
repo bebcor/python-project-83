@@ -6,12 +6,20 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 source $HOME/.local/bin/env
 
 
-python -m venv .venv || true
+python -m venv .venv || echo "Virtual environment already exists"
 
 
-source .venv/bin/activate
-uv pip install -r requirements.txt
+.venv/bin/pip install ruff==0.11.4  
 
 
-echo "Проверка Ruff:"
-.venv/bin/pip list | grep ruff
+.venv/bin/pip install -r requirements.txt
+
+
+echo "Проверка установленных пакетов:"
+.venv/bin/pip list
+
+
+if ! .venv/bin/pip show ruff &> /dev/null; then
+    echo "Ошибка: Ruff не установлен!"
+    exit 1
+fi
