@@ -12,7 +12,7 @@ build:
 	./build.sh
 
 render-start:
-    gunicorn -w 5 -b 0.0.0.0:${PORT} "hexlet_code.page_analyzer.app:app"
+	gunicorn -w 5 -b 0.0.0.0:${PORT} "hexlet_code.page_analyzer.app:app"
 
 lint:
 	python3 -m ruff check .
