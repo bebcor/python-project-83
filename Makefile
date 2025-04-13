@@ -15,7 +15,7 @@ render-start:
 	.venv/bin/gunicorn -w 5 -b 0.0.0.0:${PORT} "hexlet_code.page_analyzer.app:app"
 
 lint:
-	python3 -m ruff check .
+    .venv/bin/python -m ruff check .
 
 test:
 	python3 -m pytest -v tests/
