@@ -20,7 +20,7 @@ jobs:
           make install
 
       - name: Run linter
-        run: make lint
+      run: uv run python -m ruff check .
 
       - name: Run tests and generate coverage
         run: make test-coverage
