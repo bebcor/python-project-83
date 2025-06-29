@@ -6,7 +6,7 @@ dev:
 
 PORT ?= 8000
 start-server:
-    uv run gunicorn --chdir code -w 5 -b 0.0.0.0:$(PORT) page_analyzer:app
+    uv run gunicorn --chdir code -w 5 -b 0.0.0.0:8001 page_analyzer.app:app
 
 build:
 	rm -rf .venv || true
