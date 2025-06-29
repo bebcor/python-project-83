@@ -195,3 +195,5 @@ def truncate_filter(s, length=100):
     if s and len(s) > length:
         return s[:length] + '...'
     return s
+
+app = Flask(__name__)

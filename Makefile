@@ -6,7 +6,7 @@ dev:
 
 PORT ?= 8000
 start:
-	uv run gunicorn -w 5 -b 0.0.0.0:$(PORT) hexlet_code.page_analyzer.app:app
+    uv run gunicorn -w 5 -b 0.0.0.0:$(PORT) code.page_analyzer.app:app
 
 build:
 	rm -rf .venv || true
