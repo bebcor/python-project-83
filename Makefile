@@ -1,3 +1,6 @@
+include .env
+export
+
 install:
 	uv sync
 
@@ -9,20 +12,13 @@ start:
 	uv run gunicorn -w 5 -b 0.0.0.0:$(PORT) hexlet_code.page_analyzer.app:app
 
 build:
-	./build.sh
+	@echo "Starting build process..."
+	@./build.sh
 
 render-start:
-	.venv/bin/gunicorn -w 5 -b 0.0.0.0:${PORT} "hexlet_code.page_analyzer.app:app"
+	gunicorn -w 5 -b 0.0.0.0:${PORT} "hexlet_code.page_analyzer.app:app"
 
 lint:
-	.venv/bin/python -m ruff check .
-
-test:
-	python3 -m pytest -v tests/
-
-test-coverage:
-	python3 -m pytest --cov=page_analyzer --cov-report xml tests/
-
-check: lint test
+	ruff check .
 
 .PHONY: install lint test test-coverage check

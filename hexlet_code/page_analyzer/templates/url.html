@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}Сайт: {{ url.name }}{% endblock %}
+
+{% block extra_css %}
+.table-container {
+    max-height: 400px;
+    overflow-y: auto;
+}
+.truncate-text {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+{% endblock %}
+
+{% block content %}
+<div class="container-lg mt-3">
+    <div class="row">
+        <div class="col-12 col-md-10 col-lg-8 mx-auto">
+            <div class="d-flex align-items-center mb-3">
+                <h1 class="me-3">Сайт: {{ url.name }}</h1>
+            </div>
+            
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" data-test="url">
+                    <tbody>
+                        <tr>
+                            <td>ID</td>
+                            <td>{{ url.id }}</td>
+                        </tr>
+                        <tr>
+                            <td>Имя</td>
+                            <td>{{ url.name }}</td>
+                        </tr>
+                        <tr>
+                            <td>Дата создания</td>
+                            <td>{{ url.created_at }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h2 class="mt-5 mb-3">Проверки</h2>
+            <form action="{{ url_for('create_check', id=url.id) }}" method="post">
+                <input type="submit" class="btn btn-primary" value="Запустить проверку">
+            </form>
+            
+            <div class="table-responsive mt-3 table-container">
+                <table class="table table-bordered table-hover" data-test="checks">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Код ответа</th>
+                            <th>h1</th>
+                            <th>title</th>
+                            <th>description</th>
+                            <th>Дата создания</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if checks %}
+                            {% for check in checks %}
+                                <tr>
+                                    <td>{{ check.id }}</td>
+                                    <td>{{ check.status_code or '' }}</td>
+                                    <td class="truncate-text">{{ check.h1 or '' }}</td>
+                                    <td class="truncate-text">{{ check.title or '' }}</td>
+                                    <td class="truncate-text">{{ check.description or '' }}</td>
+                                    <td>{{ check.created_at }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="6" class="text-center">Пока нет проверок</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
