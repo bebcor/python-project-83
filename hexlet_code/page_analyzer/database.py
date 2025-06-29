@@ -13,7 +13,6 @@ def get_connection():
 
 
 def init_db():
-    """Инициализация БД при старте приложения"""
     print("Initializing database...")
     conn = None
     try:

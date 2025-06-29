@@ -15,7 +15,7 @@ from flask import (
     url_for,
 )
 
-from .database import init_db  # Убедитесь что init_db не требует аргументов
+from .database import init_db
 from .url_repository import (
     create_url,
     create_url_check,
