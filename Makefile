@@ -16,7 +16,7 @@ build:
 	.venv/bin/uv pip install -r requirements.txt
 
 render-start:
-	uv run gunicorn -w 5 -b 0.0.0.0:${PORT} "hexlet_code.page_analyzer.app:app"
+    .venv/bin/gunicorn -w 5 -b 0.0.0.0:${PORT} "hexlet_code.page_analyzer.app:app"
 
 lint:
 	uv run python -m ruff check .
