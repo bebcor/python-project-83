@@ -5,4 +5,33 @@
 [![CI](https://github.com/bebcor/python-project-83/actions/workflows/pyci.yml/badge.svg)](https://github.com/bebcor/python-project-83/actions)
 
 
-###saitI
+## Analizator
+### Page Analyzer is a website that analyzes pages for SEO suitability.
+### Input: Page link
+### Output: Analysis result
+
+
+## 1) Usage:
+
+### make install
+
+
+## 2) Launch during development
+
+### make dev
+
+
+## 3) Linter
+### make lint
+
+## 4) Technology stack
+
+###Flask==3.1.0
+###gunicorn==23.0.0 
+###python-dotenv==1.1.0
+###ruff==0.11.4
+###psycopg2-binary==2.9.10
+###beautifulsoup4==4.13.4
+###requests==2.32.4
+###validators==0.35.0
+
