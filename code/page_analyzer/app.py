@@ -15,8 +15,8 @@ from flask import (
     url_for,
 )
 
-from .database import init_db
-from .url_repository import (
+from page_analyzer.database import init_db
+from page_analyzer.url_repository import (
     create_url,
     create_url_check,
     find_url_by_name,
