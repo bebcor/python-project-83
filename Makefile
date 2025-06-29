@@ -15,8 +15,9 @@ build:
 	.venv/bin/pip install uv==0.7.16
 	.venv/bin/uv pip install -r requirements.txt
 
+
 render-start:
-    .venv/bin/gunicorn -w 5 -b 0.0.0.0:${PORT} "hexlet_code.page_analyzer.app:app"
+	.venv/bin/uv run gunicorn -w 5 -b 0.0.0.0:${PORT} "hexlet_code.page_analyzer.app:app"
 
 lint:
 	uv run python -m ruff check .
