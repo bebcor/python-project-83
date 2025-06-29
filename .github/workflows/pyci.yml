@@ -14,19 +14,30 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install dependencies
+      - name: Install UV
+        run: pip3 install --user uv
+
+      - name: Set environment variables
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
         run: |
-          pip3 install --user uv pytest pytest-cov
-          make install
+          echo "DATABASE_URL=$DATABASE_URL" >> .env
+          echo "SECRET_KEY=$SECRET_KEY" >> .env
+          
+      - name: Install project dependencies
+        run: uv sync
 
       - name: Run linter
-      run: uv run python -m ruff check .
+        run: uv run python -m ruff check .
 
       - name: Run tests and generate coverage
-        run: make test-coverage
+        run: |
+          uv run pip install pytest pytest-cov
+          uv run pytest --cov=hexlet_code --cov-report=term-missing --cov-report=lcov
 
       - name: Upload coverage to Qlty.sh
         uses: qltysh/qlty-action/coverage@main
         with:
           coverage-token: ${{ secrets.QLTY_COVERAGE_TOKEN }}
-          files: lcov.info  
+          files: lcov.info
