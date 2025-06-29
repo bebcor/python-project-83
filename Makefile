@@ -5,8 +5,9 @@ dev:
 	uv run flask --debug --app hexlet_code.page_analyzer.app:app run
 
 PORT ?= 8000
+
 start-server:
-	uv run gunicorn --chdir code -w 5 -b 0.0.0.0:8001 page_analyzer.app:app
+	uv run gunicorn --chdir code --pythonpath . -w 5 -b 0.0.0.0:8001 app:app
 
 build:
 	rm -rf .venv || true
