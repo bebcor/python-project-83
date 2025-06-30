@@ -7,7 +7,8 @@ dev:
 	uv run flask --debug --app code.page_analyzer.app:app run
 
 start-server:
-	uv run gunicorn -w 5 -b 0.0.0.0:8001 wsgi:app
+    uv pip install -r requirements.txt
+    uv run gunicorn -w 5 -b 0.0.0.0:8001 wsgi:app
 
 build:
 	rm -rf .venv || true
@@ -23,3 +24,5 @@ lint:
 	uv run python -m ruff check .
 
 .PHONY: install lint render-start build dev start-server
+
+
