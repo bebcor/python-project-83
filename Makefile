@@ -7,7 +7,7 @@ dev:
 	uv run flask --debug --app code.page_analyzer.app:app run
 
 start-server:
-	uv run gunicorn --chdir code/page_analyzer -w 5 -b 0.0.0.0:8001 app:app
+	uv run gunicorn -w 5 -b 0.0.0.0:8001 wsgi:app
 
 build:
 	rm -rf .venv || true
