@@ -4,11 +4,11 @@ install:
 	uv sync
 
 dev:
-	uv run flask --debug --app code.page_analyzer.app:app run
+    uv run flask --debug --app page_analyzer.page_analyzer.app:app run
 
 start-server:
-    uv pip install -r requirements.txt
-    uv run gunicorn -w 5 -b 0.0.0.0:8001 wsgi:app
+	uv pip install -r requirements.txt
+	uv run gunicorn -w 5 -b 0.0.0.0:8001 "page_analyzer.page_analyzer.app:app"
 
 build:
 	rm -rf .venv || true
@@ -18,11 +18,9 @@ build:
 	.venv/bin/uv pip install -r requirements.txt
 
 render-start:
-	.venv/bin/uv run gunicorn -w 5 -b 0.0.0.0:${PORT} "code.page_analyzer.app:app"
+	.venv/bin/uv run gunicorn -w 5 -b 0.0.0.0:${PORT} "page_analyzer.page_analyzer.app:app""
 
 lint:
 	uv run python -m ruff check .
 
 .PHONY: install lint render-start build dev start-server
-
-
