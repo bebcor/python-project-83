@@ -9,6 +9,10 @@ dependencies = [
     "gunicorn>=23.0.0",
     "python-dotenv>=1.1.0",
     "validators>=0.34.0",
+    "ruff>=0.11.4",
+    "psycopg2-binary>=2.9.10",
+    "beautifulsoup4>=4.13.4",
+    "requests>=2.32.4",
 ]
 
 [build-system]
@@ -17,5 +21,8 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["page_analyzer"]
+
+
+
 
 
