@@ -7,7 +7,7 @@ dev:
 	uv run flask --debug --app page_analyzer.page_analyzer.app:app run --port 8000
 
 start-server:
-	uv run gunicorn -w 5 -b 0.0.0.0:8000 "page_analyzer.page_analyzer.app:app"
+	uv run gunicorn -w 5 -b 0.0.0.0:8000 "page_analyzer.page_analyzer:app"
 
 build:
 	rm -rf .venv || true
