@@ -1,13 +1,13 @@
+PORT ?= 8000
+
 install:
 	uv sync
 
 dev:
-	uv run flask --debug --app hexlet_code.page_analyzer.app:app run
-
-PORT ?= 8000
+	uv run flask --debug --app code.page_analyzer.app:app run
 
 start-server:
-	uv run gunicorn --chdir code --pythonpath . -w 5 -b 0.0.0.0:8001 app:app
+	uv run gunicorn --chdir code -w 5 -b 0.0.0.0:8001 page_analyzer.app:app
 
 build:
 	rm -rf .venv || true
@@ -16,11 +16,10 @@ build:
 	.venv/bin/pip install uv==0.7.16
 	.venv/bin/uv pip install -r requirements.txt
 
-
 render-start:
-	.venv/bin/uv run gunicorn -w 5 -b 0.0.0.0:${PORT} "hexlet_code.page_analyzer.app:app"
+	.venv/bin/uv run gunicorn -w 5 -b 0.0.0.0:${PORT} "code.page_analyzer.app:app"
 
 lint:
 	uv run python -m ruff check .
 
-.PHONY: install lint test test-coverage check
+.PHONY: install lint render-start build dev start-server
