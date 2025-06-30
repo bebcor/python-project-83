@@ -15,7 +15,6 @@ from flask import (
     url_for,
 )
 
-from .database import init_db
 from .url_repository import (
     create_url,
     create_url_check,
@@ -29,8 +28,6 @@ load_dotenv()
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
-
-init_db()
 
 
 def normalize_url(url):
@@ -198,4 +195,6 @@ def truncate_filter(s, length=100):
 
 
 if __name__ == "__main__":
+    from .database import init_db
+    init_db()
     app.run(host='0.0.0.0', port=8000)

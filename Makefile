@@ -4,23 +4,20 @@ install:
 	uv sync
 
 dev:
-    uv run flask --debug --app page_analyzer.page_analyzer.app:app run
+	uv run flask --debug --app page_analyzer.page_analyzer.app:app run --port 8000
 
 start-server:
-	uv pip install -r requirements.txt
-	uv run gunicorn -w 5 -b 0.0.0.0:8001 "page_analyzer.page_analyzer.app:app"
+	uv run gunicorn -w 5 -b 0.0.0.0:8000 "page_analyzer.page_analyzer.app:app"
 
 build:
 	rm -rf .venv || true
-	python3 -m venv .venv
-	.venv/bin/pip install --upgrade pip
-	.venv/bin/pip install uv==0.7.16
-	.venv/bin/uv pip install -r requirements.txt
+	uv venv -p python3 .venv
+	. .venv/bin/activate && uv pip install -r requirements.txt
 
 render-start:
-	.venv/bin/uv run gunicorn -w 5 -b 0.0.0.0:${PORT} "page_analyzer.page_analyzer.app:app""
+	. .venv/bin/activate && gunicorn -w 5 -b 0.0.0.0:${PORT} "page_analyzer.page_analyzer.app:app"
 
 lint:
-	uv run python -m ruff check .
+	uv run ruff check .
 
 .PHONY: install lint render-start build dev start-server
