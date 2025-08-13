@@ -24,7 +24,6 @@
 ### make lint
 
 ## 4) Technology stack
-
 ###Flask==3.1.0
 ###gunicorn==23.0.0 
 ###python-dotenv==1.1.0
@@ -33,6 +32,5 @@
 ###beautifulsoup4==4.13.4
 ###requests==2.32.4
 ###validators==0.35.0
-
 #Enjoy your use!
 
