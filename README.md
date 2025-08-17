@@ -6,7 +6,7 @@
 
 **Page Analyzer** is a web application on Flask for analyzing the SEO suitability of web pages. The application checks the availability of the site, extracts and analyzes key HTML elements (title, h1, description), checks the status of the server response and allows you to save the history of checks.
 
-### Technology stack
+### 💻 Technology stack
 |     Tools      | Version |
 |:--------------:|:-------:|
 |     Python     | ^3.13.0 |
@@ -19,7 +19,7 @@
 |     requests   | ^2.32.4 |
 |     validators | ^0.35.0 |
 
-### Installation  & Launching
+### ⏳ Installation  & Launching
 
 1. Install dependencies:
    
