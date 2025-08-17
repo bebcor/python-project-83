@@ -19,7 +19,7 @@
 |     requests   | ^2.32.4 |
 |     validators | ^0.35.0 |
 
-### ⏳ Installation  & Launching
+### 🔄 Installation  & Launching
 
 1. Install dependencies:
    
